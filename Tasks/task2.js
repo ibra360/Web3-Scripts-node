@@ -278,36 +278,42 @@ const main = async () => {
     const transferFrom = async () => {
       try {
         // console.log(web3.utils.fromWei("100000000000000"));
-        erc20Token.methods
-          .approve(receiverAddress, web3.utils.toWei("100000"))
-          .send({ from: user.address, gasLimit: "86000" }, function (err, res) {
-            if (err) {
-              console.log("An error occured in approve", err);
-              return;
-            }
-            console.log("Hash of the  approve transaction: ", res);
-          });
-
-        erc20Token.methods
+        const allow = await erc20Token.methods
           .allowance(senderAddress, receiverAddress)
-          .send({ from: user.address, gasLimit: "81800" }, function (err, res) {
+          .call(function (err, res) {
             if (err) {
               console.log("An error occured in allownace", err);
               return;
             }
-            console.log("Hash of the  allowance transaction: ", res);
+            console.log("Allowance amount ", res);
           });
-        // erc20Token.methods
-        //   .transferFrom(senderAddress, receiverAddress, "100000000000000")
-        //   .send({ from: user.address, gasLimit: "76000" }, function (err, res) {
-        //     if (err) {
-        //       console.log("An error occured in tf", err);
-        //       return;
-        //     }
-        //     console.log("Hash of the transferFrommm transaction: ", res);
-        //   });
+
+        if (!Number(allow)) {
+          await erc20Token.methods
+            .approve(senderAddress, web3.utils.toWei("1000000000000000000"))
+            .send(
+              { from: user.address, gasLimit: "86000" },
+              function (err, res) {
+                if (err) {
+                  console.log("An error occured in approve", err);
+                  return;
+                }
+                console.log("Hash of the  approve transaction: ", res);
+              }
+            );
+        }
+
+        await erc20Token.methods
+          .transferFrom(senderAddress, receiverAddress, "100000000000000")
+          .send({ from: user.address, gasLimit: "96000" }, function (err, res) {
+            if (err) {
+              console.log("An error occured in tf", err);
+              return;
+            }
+            console.log("Hash of the transferFrommm transaction: ", res);
+          });
       } catch (e) {
-        console.log(e);
+        console.log("Error in catch block", e);
       }
     };
 
