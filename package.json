@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Web3 Tasks",
   "main": "index.js",
-  
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon Tasks/task2.js"
+    "start": "nodemon Tasks/task3.js"
   },
   "author": "AbdullahIbrahim",
   "license": "ISC",
