@@ -233,8 +233,7 @@ const pkg = require("ethers");
 const { ethers } = pkg;
 const log = require("ololog").configure();
 const testnet = `https://rinkeby.infura.io/v3/84842078b09946638c03157f83405213`;
-const EthereumTx = require("ethereumjs-tx");
-const axios = require("axios");
+
 const TOKEN_ADDRESS = "0x051c3A370a833CCF2541dc2493D9da49Aaa4e15d";
 const senderAddress = "0x5C22594Bac91A1caCd32c53afdcBd2e8350bD0E8";
 const receiverAddress = "0xCd343942C6D1Dc6734a35d1304f23938d2c41a07";

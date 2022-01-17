@@ -1,6 +1,4 @@
 import Web3 from "web3";
-import ERC20TransferABI from "../abi.js";
-
 
 const ETH_NODE_URL =
   "https://rinkeby.infura.io/v3/84842078b09946638c03157f83405213";
