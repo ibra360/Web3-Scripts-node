@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon Tasks/task8.js"
+    "start": "nodemon Tasks/task6.js"
   },
   "author": "AbdullahIbrahim",
   "license": "ISC",

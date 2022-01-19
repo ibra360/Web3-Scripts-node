@@ -10,7 +10,7 @@ web3.eth.getTransactionReceipt(txnHash, function (e, data) {
         console.log("Could not find a transaction for your id! ID you provided was " + txnHash);
     } else {
         console.log(data);
-        if(data.status == '0x0') {
+        if(!data.status) {
             console.log("The contract execution was not successful, check your transaction !");
         } else {
             console.log("Execution worked fine! And the gas used in this txn is :",data.gasUsed );
